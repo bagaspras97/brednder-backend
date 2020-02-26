@@ -9,7 +9,7 @@ const app = express();
 const bodyParser = require("body-parser");
 
 //define the server port
-const port = process.env.PORT | 3500;
+const port = process.env.PORT || 3500;
 
 //allow this app to receive incoming json request
 app.use(bodyParser.json());
