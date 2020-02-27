@@ -225,7 +225,6 @@ exports.dataMath = async (req, res) => {
     });
     if (data2) {
       res.send({
-        //   data2
         id: data2.id,
         status: data2.status,
         pet: {
