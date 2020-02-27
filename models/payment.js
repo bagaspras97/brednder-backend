@@ -5,7 +5,8 @@ module.exports = (sequelize, DataTypes) => {
     {
       no_rek: DataTypes.STRING,
       proof_of_transfer: DataTypes.STRING,
-      user_id: DataTypes.INTEGER
+      user_id: DataTypes.INTEGER,
+      status: DataTypes.STRING
     },
     {}
   );

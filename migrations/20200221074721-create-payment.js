@@ -26,6 +26,9 @@ module.exports = {
         onUpdate: "cascade",
         onDelete: "cascade"
       },
+      status: {
+        type: Sequelize.ENUM(["FREE", "PREMIUM"])
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

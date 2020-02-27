@@ -30,6 +30,8 @@ const { authenticated } = require("./middleware");
 const PetController = require("./controllers/pet");
 const AuthController = require("./controllers/auth");
 const userController = require("./controllers/user");
+const Payments = require("./controllers/payment");
+const Match = require("./controllers/match");
 
 //GET list route: simply send arr of obj todos your user screen
 app.group("/api/v1", router => {
@@ -49,6 +51,14 @@ app.group("/api/v1", router => {
   router.get("/user/:id", authenticated, userController.getDetailUser);
   router.put("/user/:id", authenticated, userController.updateUser);
   router.delete("/user/:id", authenticated, userController.deleteUser);
+
+  router.post("/payments", authenticated, Payments.payment);
+  router.put("/admin/:id", authenticated, Payments.preUpdate);
+
+  router.get("/checkMatch", authenticated, Match.chekMatch);
+  router.post("/createMatch", authenticated, Match.createMatch);
+  router.get("/checkAllMatch", Match.dataMath);
+
   //   // app.get("/todos", authenticated, TodosController.index);
   //   // //GET detail route: receive json body request, from user input, then push to todos array
   //   // app.get("/todo/:id", authenticated, TodosController.show);

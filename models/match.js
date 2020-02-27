@@ -17,7 +17,12 @@ module.exports = (sequelize, DataTypes) => {
     // });
     match.belongsTo(models.pet, {
       foreignKey: "pet_id",
-      foreignKey: "pet_id_liked"
+      as: "pet"
+    });
+
+    match.belongsTo(models.pet, {
+      foreignKey: "pet_id_liked",
+      as: "pet_liked"
     });
   };
   return match;

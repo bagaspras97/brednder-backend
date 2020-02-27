@@ -20,15 +20,17 @@ module.exports = {
       [
         {
           no_rek: 10101010101,
-          proof_of_transfer: "",
+          proof_of_transfer: "bukti.jpg",
           user_id: 1,
+          status: "FREE",
           createdAt: dateTime,
           updatedAt: dateTime
         },
         {
           no_rek: 202020202020,
-          proof_of_transfer: "",
+          proof_of_transfer: "bukti.jpg",
           user_id: 2,
+          status: "FREE",
           createdAt: dateTime,
           updatedAt: dateTime
         }
