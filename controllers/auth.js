@@ -24,12 +24,13 @@ exports.login = (req, res) => {
     }
   });
 };
-
 exports.store = (req, res) => {
   try {
     const { breeder, email, password, phone, address } = req.body;
+
     // const { name, gender, about_pet } = req.body.pet;
     User.findOne({ where: { email } }).then(Email => {
+      console.log(password);
       if (!Email) {
         User.create({
           breeder: breeder,
@@ -43,7 +44,7 @@ exports.store = (req, res) => {
             gender: req.body.pet.gender,
             about_pet: req.body.pet.about_pet,
             user_id: user.id,
-            Species_id: req.body.pet.spesies.id,
+            species_id: req.body.pet.spesies.id,
             age_id: req.body.pet.age.id
           }).then(pet => {
             const token = jwt.sign({ userId: user.id }, "my-secret-key");

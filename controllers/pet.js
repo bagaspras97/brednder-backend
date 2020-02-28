@@ -16,9 +16,10 @@ exports.insertPet = (req, res) => {
     aboutpet: req.body.about_pet,
     photo: req.body.photo,
     user_id: userId,
-    spesies_id: spesiesId,
+    species_id: spesiesId,
     age_id: ageId
   };
+
   Pet.create(dataPet).then(resPet => {
     User.findOne({ where: { id: userId } }).then(userData => {
       Spesies.findOne({ where: { id: spesiesId } }).then(spesiesData => {
