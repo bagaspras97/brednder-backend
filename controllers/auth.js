@@ -42,8 +42,8 @@ exports.store = (req, res) => {
           Pet.create({
             name: req.body.pet.name,
             gender: req.body.pet.gender,
-            about_pet: req.body.pet.about_pet,
-            user_id: user.id,
+            // about_pet: req.body.pet.about_pet,
+            // user_id: user.id,
             species_id: req.body.pet.spesies.id,
             age_id: req.body.pet.age.id
           }).then(pet => {

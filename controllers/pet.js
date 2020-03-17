@@ -21,10 +21,10 @@ exports.insertPet = (req, res) => {
   };
 
   Pet.create(dataPet).then(resPet => {
-    User.findOne({ where: { id: userId } }).then(userData => {
+    User.findOne({ where: { id: resPet.id } }).then(userData => {
       Spesies.findOne({ where: { id: spesiesId } }).then(spesiesData => {
         Age.findOne({ where: { id: ageId } }).then(ageData => {
-          const resDataCok = {
+          const pets = {
             id: resPet.id,
             name: resPet.name,
             ageData,
@@ -35,7 +35,7 @@ exports.insertPet = (req, res) => {
           };
           res.send({
             message: "Successs",
-            resDataCok
+            pets
           });
         });
       });

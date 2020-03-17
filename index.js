@@ -1,9 +1,20 @@
 // instatiate express module
 const express = require("express");
 require("express-group-routes");
+const cors = require("cors");
 
 //use express in app variable
 const app = express();
+
+//cors
+app.use(cors());
+
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "*");
+  res.header("Access-Control-Allow-Methods", "*");
+  next();
+});
 
 //init bodyParser
 const bodyParser = require("body-parser");
@@ -37,24 +48,24 @@ const Match = require("./controllers/match");
 app.group("/api/v1", router => {
   router.post("/login", AuthController.login);
   router.post("/register", AuthController.store);
-
+  //species
   router.post("/species", AuthController.addSpecies);
   router.get("/species", AuthController.species);
-
+  //pet
   router.post("/pet", authenticated, PetController.insertPet);
   router.get("/pet", authenticated, PetController.getPets);
   router.put("/pet/:id", authenticated, PetController.updatePet);
   router.delete("/pet/:id", authenticated, PetController.deletePet);
-
+  //detailpet
   router.get("/pet/:id", AuthController.detailPet);
-
+  //user
   router.get("/user/:id", authenticated, userController.getDetailUser);
   router.put("/user/:id", authenticated, userController.updateUser);
   router.delete("/user/:id", authenticated, userController.deleteUser);
-
+  //payment
   router.post("/payments", authenticated, Payments.payment);
   router.put("/admin/:id", authenticated, Payments.preUpdate);
-
+  //match
   router.get("/checkMatch", authenticated, Match.chekMatch);
   router.post("/createMatch", authenticated, Match.createMatch);
   router.get("/checkAllMatch", Match.dataMath);
